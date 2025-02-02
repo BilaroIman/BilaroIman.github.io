@@ -8,14 +8,14 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            background-color: #FFFFFF;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             color: #333;
         }
         header {
             background-color: #333;
-            color: white;  /* Changed the text color to white for better contrast */
+            color: white;
             padding: 20px;
             text-align: center;
         }
@@ -23,7 +23,7 @@
             margin: 20px;
         }
         h1 {
-            color: white;  /* Changed the color of the title text to white */
+            color: white;
         }
         h2 {
             color: #555;
@@ -46,6 +46,10 @@
             border-left: 4px solid #007BFF;
             margin: 10px 0;
         }
+        .highlight {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +61,7 @@
 <section>
     <h2>Before setting up your environment, ensure you have the following installed:</h2>
 
-    <p><strong>Python</strong> – A powerful programming language used for automation, scripting, and application development. You can download the latest version for Windows <a href="https://www.python.org/downloads/windows/" target="_blank">here</a>.</p>
+    <p><strong class="highlight">Python</strong> – A powerful programming language used for automation, scripting, and application development. You can download the latest version for Windows <a href="https://www.python.org/downloads/windows/" target="_blank">here</a>.</p>
 
     <div class="note">
         <p>Make sure to check the option <strong>"Add Python to PATH"</strong> during installation for seamless command-line access.</p>
@@ -69,14 +73,23 @@
 
     <p>This should output the installed Python version. If Python is properly installed, you should see something like:</p>
 
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/pyton.png" alt="phyton version">
-    
-    <h3>Install Flask</h3>
+    <code>Python 3.x.x</code>
 
-    <p>Open CMD and run the command: </p>
+    <h3><strong class="highlight">Install Flask</strong></h3>
+    <p>Open CMD and run the command:</p>
+    <code>pip install flask</code>
+    <p>Wait for the installation to complete. Pip will download and install Flask and its dependencies.</p>
 
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/flask%20install.png" alt="install flask">
-    
+    <h3><strong class="highlight">Docker & Docker Desktop</strong> – A containerization platform that enables you to package applications with their dependencies and run them in isolated environments. It is essential for deploying containerized applications. Install it by following this link:</h3>
+    <p><a href="https://docs.docker.com/get-started/get-docker/" target="_blank">Get Docker</a></p>
+
+    <h3><strong class="highlight">Kubectl</strong> – A command-line tool for interacting with Kubernetes clusters, allowing you to deploy and manage applications efficiently. To install kubectl on Windows, follow the official guide here:</h3>
+    <p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-nonstandard-package-tools" target="_blank">Install kubectl</a></p>
+
+    <h3><strong class="highlight">Minikube</strong> – A lightweight Kubernetes implementation that lets you run a local cluster for development and testing. It is ideal for learning and experimenting with Kubernetes. Download and install Minikube for Windows using this link:</h3>
+    <p><a href="https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download" target="_blank">Download Minikube</a></p>
+
+    <h3>Once you have installed and configured these tools, you’ll be ready to start working with Kubernetes and containerized applications! 🚀</h3>
 </section>
 
 </body>
