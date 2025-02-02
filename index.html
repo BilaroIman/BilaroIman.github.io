@@ -70,6 +70,8 @@
     <p>After downloading and installing Python, verify the installation by using this command in CMD:</p>
     
     <pre><code>python --version</code></pre>
+
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/pyton.png" alt="Phyton version">
     
     <p>This should output the installed Python version. If Python is properly installed, you should see something like:</p>
     
@@ -79,6 +81,8 @@
     <p>Open CMD and run the command:</p>
     
     <pre><code>pip install flask</code></pre>
+
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/flask%20install.png" alt="install flask">
     
     <p>Wait for the installation to complete. Pip will download and install Flask and its dependencies.</p>
 
@@ -95,6 +99,8 @@
 <section>
     <h2>Create Project Structure</h2>
     <p>Create a directory for your project and organize it as follows:</p>
+    
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/structure.png" alt="structure">
 
     <h3><strong class="highlight">Step 1: Implement the User Service</strong></h3>
     <p>Go to the directory <strong>'user_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
@@ -121,6 +127,8 @@ if __name__ == '__main__':
     app.run(port=5001)
     </code></pre>
 
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/userservice.png" alt="user-service">
+
     <h3><strong class="highlight">Step 2: Implement the Product Service</strong></h3>
     <p>Go to the directory <strong>'product_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
 
@@ -145,6 +153,8 @@ def get_products():
 if __name__ == '__main__':
     app.run(port=5002)
     </code></pre>
+
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/productservice.png" alt="product-service">
 
     <h3><strong class="highlight">Step 3: Implement the Order Service</strong></h3>
     <p>Go to the directory <strong>'order_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
@@ -172,17 +182,22 @@ if __name__ == '__main__':
     app.run(port=5003)
     </code></pre>
 
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/orderservice.png" alt="order-service">
+
     <h3><strong class="highlight">Step 6: Run the Microservices</strong></h3>
     <p>Open a command prompt, navigate to each microservice directory, and run each service using the command:</p>
 
     <pre><code>python app.py</code></pre>
 
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/pythonrun.png" alt="run-the-service">
+
     <p>Then open your browser and access the services:</p>
     <ul>
         <li>User Service: <a href="http://localhost:5001/users" target="_blank">http://localhost:5001/users</a></li>
-        <li>Product Service: <a href="http://localhost:5002/products" target="_blank">http://localhost:5002/products</a></li>
-        <li>Order Service: <a href="http://localhost:5003/orders" target="_blank">http://localhost:5003/orders</a></li>
     </ul>
+    <p>Result</p>
+
+    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/result.png" alt="result">
 
     <p>Repeat these steps for the other microservices to ensure they are all running properly.</p>
 </section>
