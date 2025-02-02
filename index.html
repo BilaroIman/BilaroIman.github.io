@@ -59,42 +59,99 @@
 </header>
 
 <section>
-    <h2>Before setting up your environment, ensure you have the following installed:</h2>
+    <h2>Create Project Structure</h2>
 
-    <p><strong class="highlight">Python</strong> – A powerful programming language used for automation, scripting, and application development. You can download the latest version for Windows <a href="https://www.python.org/downloads/windows/" target="_blank">here</a>.</p>
+    <p>Create a directory for your project and organize it as follows:</p>
 
-    <div class="note">
-        <p>Make sure to check the option <strong>"Add Python to PATH"</strong> during installation for seamless command-line access.</p>
-    </div>
+    <h3><strong class="highlight">Step 1: Implement the User Service</strong></h3>
+    <p>Go to the directory <strong>'user_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
 
-    <h3>After downloading and installing Python, verify the installation by using this command in CMD:</h3>
+    <p>Add the following code to <strong>'app.py'</strong>:</p>
 
-    <code>python --version</code>
+    <pre><code>
+from flask import Flask, jsonify
 
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/pyton.png" alt="Phyton version">
+app = Flask(__name__)
 
-    <p>This should output the installed Python version. If Python is properly installed, you should see something like:</p>
+# Sample user data (for demonstration purposes)
+users = [
+    {"id": 1, "name": "User 1"},
+    {"id": 2, "name": "User 2"},
+    {"id": 3, "name": "User 3"},
+]
 
-    <code>Python 3.x.x</code>
+@app.route('/users')
+def get_users():
+    return jsonify(users)
 
-    <h3><strong class="highlight">Install Flask</strong></h3>
-    <p>Open CMD and run the command:</p>
-    <code>pip install flask</code>
+if __name__ == '__main__':
+    app.run(port=5001)
+    </code></pre>
 
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/flask%20install.png" alt="install flask">
-    
-    <p>Wait for the installation to complete. Pip will download and install Flask and its dependencies.</p>
+    <h3><strong class="highlight">Step 2: Implement the Product Service</strong></h3>
+    <p>Go to the directory <strong>'product_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
 
-    <h3><strong class="highlight">Docker & Docker Desktop</strong> – A containerization platform that enables you to package applications with their dependencies and run them in isolated environments. It is essential for deploying containerized applications. Install it by following this link:</h3>
-    <p><a href="https://docs.docker.com/get-started/get-docker/" target="_blank">Get Docker</a></p>
+    <p>Add the following code to <strong>'app.py'</strong>:</p>
 
-    <h3><strong class="highlight">Kubectl</strong> – A command-line tool for interacting with Kubernetes clusters, allowing you to deploy and manage applications efficiently. To install kubectl on Windows, follow the official guide here:</h3>
-    <p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-nonstandard-package-tools" target="_blank">Install kubectl</a></p>
+    <pre><code>
+from flask import Flask, jsonify
 
-    <h3><strong class="highlight">Minikube</strong> – A lightweight Kubernetes implementation that lets you run a local cluster for development and testing. It is ideal for learning and experimenting with Kubernetes. Download and install Minikube for Windows using this link:</h3>
-    <p><a href="https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download" target="_blank">Download Minikube</a></p>
+app = Flask(__name__)
 
-    <h3>Once you have installed and configured these tools, you’ll be ready to start working with Kubernetes and containerized applications! 🚀</h3>
+# Sample product data (for demonstration purposes)
+products = [
+    {"id": 1, "name": "Product 1", "price": 10.99},
+    {"id": 2, "name": "Product 2", "price": 19.99},
+    {"id": 3, "name": "Product 3", "price": 5.99},
+]
+
+@app.route('/products')
+def get_products():
+    return jsonify(products)
+
+if __name__ == '__main__':
+    app.run(port=5002)
+    </code></pre>
+
+    <h3><strong class="highlight">Step 3: Implement the Order Service</strong></h3>
+    <p>Go to the directory <strong>'order_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
+
+    <p>Add the following code to <strong>'app.py'</strong>:</p>
+
+    <pre><code>
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Sample order data (for demonstration purposes)
+orders = []
+
+@app.route('/orders', methods=['GET', 'POST'])
+def manage_orders():
+    if request.method == 'GET':
+        return jsonify(orders)
+    elif request.method == 'POST':
+        data = request.get_json()
+        orders.append(data)
+        return jsonify({"message": "Order created successfully!"})
+
+if __name__ == '__main__':
+    app.run(port=5003)
+    </code></pre>
+
+    <h3><strong class="highlight">Step 6: Run the Microservices</strong></h3>
+    <p>Open a command prompt, navigate to each microservice directory, and run each service using the command:</p>
+
+    <pre><code>python app.py</code></pre>
+
+    <p>Then open your browser and access the services:</p>
+    <ul>
+        <li>User Service: <a href="http://localhost:5001/users" target="_blank">http://localhost:5001/users</a></li>
+        <li>Product Service: <a href="http://localhost:5002/products" target="_blank">http://localhost:5002/products</a></li>
+        <li>Order Service: <a href="http://localhost:5003/orders" target="_blank">http://localhost:5003/orders</a></li>
+    </ul>
+
+    <p>Repeat these steps for the other microservices to ensure they are all running properly.</p>
 </section>
 
 </body>
