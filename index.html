@@ -59,8 +59,41 @@
 </header>
 
 <section>
-    <h2>Create Project Structure</h2>
+    <h2>Before Setting Up Your Environment</h2>
+    <p>Ensure you have the following installed:</p>
+    
+    <h3><strong class="highlight">Python</strong></h3>
+    <p>A powerful programming language used for automation, scripting, and application development. You can download the latest version for Windows here: <a href="https://www.python.org/downloads/windows/" target="_blank">Python for Windows</a></p>
+    
+    <p>Make sure to check the option "<strong>Add Python to PATH</strong>" during installation for seamless command-line access.</p>
+    
+    <p>After downloading and installing Python, verify the installation by using this command in CMD:</p>
+    
+    <pre><code>python --version</code></pre>
+    
+    <p>This should output the installed Python version. If Python is properly installed, you should see something like:</p>
+    
+    <pre><code>Python 3.x.x</code></pre>
 
+    <h3><strong class="highlight">Install Flask</strong></h3>
+    <p>Open CMD and run the command:</p>
+    
+    <pre><code>pip install flask</code></pre>
+    
+    <p>Wait for the installation to complete. Pip will download and install Flask and its dependencies.</p>
+
+    <h3><strong class="highlight">Install Docker & Docker Desktop</strong></h3>
+    <p>Docker is essential for deploying containerized applications. Install it by following this link: <a href="https://docs.docker.com/get-started/get-docker/" target="_blank">Install Docker</a></p>
+
+    <h3><strong class="highlight">Install Kubectl</strong></h3>
+    <p>Kubectl is a command-line tool for interacting with Kubernetes clusters. To install kubectl on Windows, follow the official guide here: <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-nonstandard-package-tools" target="_blank">Install kubectl</a></p>
+
+    <h3><strong class="highlight">Install Minikube</strong></h3>
+    <p>Minikube is a lightweight Kubernetes implementation for local clusters. Download and install Minikube for Windows using this link: <a href="https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download" target="_blank">Install Minikube</a></p>
+</section>
+
+<section>
+    <h2>Create Project Structure</h2>
     <p>Create a directory for your project and organize it as follows:</p>
 
     <h3><strong class="highlight">Step 1: Implement the User Service</strong></h3>
