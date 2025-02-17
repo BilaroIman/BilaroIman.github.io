@@ -20,48 +20,39 @@
             text-align: center;
         }
         nav {
-            background: #444;
+            background-color: #007BFF;
             padding: 10px;
             text-align: center;
         }
         nav a {
             color: white;
-            margin: 0 15px;
             text-decoration: none;
-            font-weight: bold;
+            padding: 10px 15px;
+            font-size: 16px;
         }
         nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            margin: 20px;
-        }
-        h1, h2 {
-            color: #555;
-        }
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        code {
-            background-color: #e9ecef;
-            padding: 5px;
+            background-color: #0056b3;
             border-radius: 5px;
         }
-        .note {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-left: 4px solid #007BFF;
-            margin: 10px 0;
+        section {
+            display: none;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .highlight {
-            background-color: #ffeb3b;
-            font-weight: bold;
+        .active {
+            display: block;
         }
     </style>
+    <script>
+        function showSection(id) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
 </head>
 <body>
 
@@ -70,115 +61,34 @@
 </header>
 
 <nav>
-    <a href="#setup">Setup</a>
-    <a href="#structure">Project Structure</a>
-    <a href="#user-service">User Service</a>
-    <a href="#product-service">Product Service</a>
-    <a href="#order-service">Order Service</a>
-    <a href="#docker">Docker Setup</a>
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('setup')">Setup Environment</a>
+    <a href="#" onclick="showSection('project_structure')">Project Structure</a>
+    <a href="#" onclick="showSection('containerization')">Containerization</a>
 </nav>
 
+<section id="home" class="active">
+    <h2>Welcome to the Microservices Deployment Guide</h2>
+    <p>Select a topic from the navigation menu above.</p>
+</section>
+
 <section id="setup">
-    <h2>Before Setting Up Your Environment</h2>
+    <h2>Setting Up Your Environment</h2>
     <p>Ensure you have the following installed:</p>
-    <h3 class="highlight">Python</h3>
-    <p>A powerful programming language used for automation, scripting, and application development. You can download the latest version for Windows here: <a href="https://www.python.org/downloads/windows/" target="_blank">Python for Windows</a></p>
-    <p>Make sure to check the option "<strong>Add Python to PATH</strong>" during installation for seamless command-line access.</p>
-    <p>After downloading and installing Python, verify the installation by using this command in CMD:</p>
+    <h3>Python</h3>
+    <p>Download from: <a href="https://www.python.org/downloads/windows/" target="_blank">Python for Windows</a></p>
+    <p>Verify installation using:</p>
     <pre><code>python --version</code></pre>
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/pyton.png" alt="Python version">
 </section>
 
-<section id="structure">
-    <h2>Create Project Structure</h2>
-    <p>Create a directory for your project and organize it as follows:</p>
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/structure.png" alt="Project Structure">
+<section id="project_structure">
+    <h2>Project Structure</h2>
+    <p>Details about organizing your microservices project.</p>
 </section>
 
-<section id="user-service">
-    <h2>Step 1: Implement the User Service</h2>
-    <p>Go to the directory <strong>'user_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
-    <pre><code>
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-users = [
-    {"id": 1, "name": "User 1"},
-    {"id": 2, "name": "User 2"},
-    {"id": 3, "name": "User 3"},
-]
-
-@app.route('/users')
-def get_users():
-    return jsonify(users)
-
-if __name__ == '__main__':
-    app.run(port=5001)
-    </code></pre>
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/userservice.png" alt="User Service">
-</section>
-
-<section id="product-service">
-    <h2>Step 2: Implement the Product Service</h2>
-    <p>Go to the directory <strong>'product_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
-    <pre><code>
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-products = [
-    {"id": 1, "name": "Product 1", "price": 10.99},
-    {"id": 2, "name": "Product 2", "price": 19.99},
-    {"id": 3, "name": "Product 3", "price": 5.99},
-]
-
-@app.route('/products')
-def get_products():
-    return jsonify(products)
-
-if __name__ == '__main__':
-    app.run(port=5002)
-    </code></pre>
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/productservice.png" alt="Product Service">
-</section>
-
-<section id="order-service">
-    <h2>Step 3: Implement the Order Service</h2>
-    <p>Go to the directory <strong>'order_service'</strong> and inside it create a new Python file called <strong>'app.py'</strong>.</p>
-    <pre><code>
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
-orders = []
-
-@app.route('/orders', methods=['GET', 'POST'])
-def manage_orders():
-    if request.method == 'GET':
-        return jsonify(orders)
-    elif request.method == 'POST':
-        data = request.get_json()
-        orders.append(data)
-        return jsonify({"message": "Order created successfully!"})
-
-if __name__ == '__main__':
-    app.run(port=5003)
-    </code></pre>
-    <img src="https://raw.githubusercontent.com/BilaroIman/BilaroIman.github.io/refs/heads/main/orderservice.png" alt="Order Service">
-</section>
-
-<section id="docker">
-    <h2>Containerize Your Microservice</h2>
-    <h3>Create Required Files</h3>
-    <p>Inside <strong>user_service</strong> create:</p>
-    <ul>
-        <li>Dockerfile</li>
-        <li>requirements.txt</li>
-    </ul>
-    <pre><code>FROM python:3.8
-WORKDIR /app
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-COPY . .
-CMD ["python", "app.py"]</code></pre>
+<section id="containerization">
+    <h2>Containerization with Docker</h2>
+    <p>Steps to containerize your application using Docker.</p>
 </section>
 
 </body>
